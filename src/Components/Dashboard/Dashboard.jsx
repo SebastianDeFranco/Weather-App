@@ -47,6 +47,8 @@ const Dashboard = () => {
     e.preventDefault();
 }
 
+//Llamo a la api de unsplash
+
 useEffect(() => {
     const getBackgroundImage = async () => {
     const response = await fetch(`https://api.unsplash.com/photos/random?query=${location}&client_id=${UNSPLASH_API_KEY}`);
@@ -57,6 +59,8 @@ useEffect(() => {
     getBackgroundImage();
 }, [location]);
 
+
+//Llamo a la api de openweathermap
 
 useEffect(() => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&lang=es&appid=${API_KEY}`;
@@ -110,10 +114,9 @@ switch (data.weather[0].main) {
         icon = <WiDayRain className='text-[#87BCDE]'/>
         break;
 }
-  const date = new Date();
-  
-  return (
-    // <div  style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center' }} className='app'>
+const date = new Date();
+
+return (
     <div 
     style={backgroundValid 
         ? 
@@ -150,7 +153,7 @@ switch (data.weather[0].main) {
             </div>
             </div>
 
-            {/* Temperatura */}
+            {/* Temperatura  */}
             <div className='my-10'>
             <div className='flex justify-center items-center'>
                 <div className='text-[125px] font-light'>
