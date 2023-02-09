@@ -16,7 +16,6 @@ body{
   background: -moz-linear-gradient(90deg, hsla(265, 53%, 29%, 1) 0%, hsla(24, 93%, 73%, 1) 100%);
   background: -webkit-linear-gradient(90deg, hsla(265, 53%, 29%, 1) 0%, hsla(24, 93%, 73%, 1) 100%);
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#432371", endColorstr="#FAAE7B", GradientType=1 );
-  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,4 +23,9 @@ body{
   padding: 5px;
 }
 
+@media (max-width:480px){
+  .app{
+    height: 100vh;
+  }
+}
 
