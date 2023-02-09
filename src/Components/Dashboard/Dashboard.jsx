@@ -19,7 +19,7 @@ import {BiSearchAlt2} from "react-icons/bi";
 
 const Dashboard = () => {
 
-    //  API KEY de unsplash para cambiar background de acuerdo a la ciudad / pais que se busca
+    // API KEY de unsplash para cambiar background de acuerdo a la ciudad / pais que se busca
 
     const UNSPLASH_API_KEY = 'YxPvH3Hg0nU0naBlWmXU9_qTC7HJ8yLIv_4J01a5vuI';
 
@@ -83,6 +83,8 @@ if(!data){
     )
 }
 
+const backgroundValid = !!backgroundImage;
+
 let icon;
 
 switch (data.weather[0].main) {
@@ -111,8 +113,16 @@ switch (data.weather[0].main) {
   const date = new Date();
   
   return (
-    <div  style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center' }} className='app'>
-        <form className='h-16 bg-black w-full max-w-[450px] rounded-full mb-8 '>
+    // <div  style={{ backgroundImage: `url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center' }} className='app'>
+    <div 
+    style={backgroundValid 
+        ? 
+        { backgroundImage: `url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center' } 
+        :
+        { background: 'app' }
+    }
+    className='app'>
+        <form className='h-16 bg-neutral-700/80 w-full max-w-[450px] rounded-full mb-8 '>
             <div className='h-full relative flex items-center justify-between p-2'>
                 <input
                 onChange={(e)=>handleInput(e)}
@@ -128,7 +138,7 @@ switch (data.weather[0].main) {
         </form>
 
     
-        <div className='w-full max-w-[450px]  text-white bg-black rounded-[20px] py-12 px-6'>
+        <div className='w-full max-w-[450px]  text-white bg-neutral-700/80 rounded-[20px] py-12 px-6'>
             {/* Info Pais y fecha */}
             <div className='bg-purple-100/30 flex items-center gap-x-5'>
             <div className='text-[100px]'>{icon}</div>
