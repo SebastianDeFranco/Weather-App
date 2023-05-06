@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import '../../App.css';
 import Loader from '../Loader/Loader';
+import { toast } from 'react-toastify';
 import { 
     WiDayLightning, 
     WiCloudy,
@@ -33,18 +34,20 @@ const Dashboard = () => {
 
 
 
+
     const handleInput = (e) =>{
         setInputValue(e.target.value)
     }
-
-    const handleSubmit = (e) =>{
-
-    if(inputValue !== ''){
-        setLocation(inputValue)
+const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue) {
+        return toast("Por favor ingrese una ciudad o país", {
+            type: "error",
+        });
     }
+    setLocation(inputValue);
     const input = document.querySelector('input');
     input.value = '';
-    e.preventDefault();
 }
 
 //Llamo a la api de unsplash
@@ -87,33 +90,38 @@ if(!data){
     )
 }
 
+
 const backgroundValid = !!backgroundImage;
 
 let icon;
 
-switch (data.weather[0].main) {
-    case 'Clouds':
-        icon = <WiCloudy/>
-        break;
-    case 'Haze':
-        icon = <WiDayHaze/>
-        break;
-    case 'Clear':
-        icon = <WiDaySunny className='text-[#E9D972]'/>
-        break;
-    case 'ThunderStorm':
-        icon = <WiDayLightning className='text-[#87BCDE]'/>
-        break;
-    case 'Drizzle':
-        icon = <WiDayShowers className='text-[#87BCDE]'/>
-        break;
-    case 'Snow':
-        icon = <WiDaySnow className='text-[#87BCDE]'/>
-        break;
-    case 'Rain':
-        icon = <WiDayRain className='text-[#87BCDE]'/>
-        break;
+if (data && data.weather && data.weather[0]){
+    switch (data.weather[0].main) {
+        case 'Clouds':
+            icon = <WiCloudy/>
+            break;
+        case 'Haze':
+            icon = <WiDayHaze/>
+            break;
+        case 'Clear':
+            icon = <WiDaySunny className='text-[#E9D972]'/>
+            break;
+        case 'ThunderStorm':
+            icon = <WiDayLightning className='text-[#87BCDE]'/>
+            break;
+        case 'Drizzle':
+            icon = <WiDayShowers className='text-[#87BCDE]'/>
+            break;
+        case 'Snow':
+            icon = <WiDaySnow className='text-[#87BCDE]'/>
+            break;
+        case 'Rain':
+            icon = <WiDayRain className='text-[#87BCDE]'/>
+            break;
+    }
 }
+
+
 const date = new Date();
 
 return (
