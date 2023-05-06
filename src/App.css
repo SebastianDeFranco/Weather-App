@@ -21,7 +21,6 @@ body{
   justify-content: center;
   align-items: center;
   padding: 5px;
-  height: 100vh;
 }
 
 
@@ -30,9 +29,5 @@ body{
     height: 100vh;
   }
 }
-/* @media (min-width:1100px){
-  .app{
-    height: 100vh;
-  }
-}  */
+
 

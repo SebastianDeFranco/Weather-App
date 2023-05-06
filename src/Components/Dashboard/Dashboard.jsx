@@ -128,7 +128,7 @@ return (
     <div 
     style={backgroundValid 
         ? 
-        { backgroundImage: `url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center' } 
+        { backgroundImage: `url(${backgroundImage})`, backgroundRepeat:'no-repeat', backgroundSize:'cover', backgroundPosition:'center', height:'130vh' } 
         :
         { background: 'app' }
     }
